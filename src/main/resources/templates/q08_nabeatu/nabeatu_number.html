@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/q08_nabeatu/css/nabeatu_number.css}" />
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>世○のさらあつ</title>
+</head>
+<body>
+	<div class="base-area">
+		<div class="img-position">
+			<div id="containter" class="background">
+				<img class="nabeatu-img"
+					th:src="@{/q08_nabeatu/img/nabeatu_number.png}">
+				<p>あなたの入力した数字は</p>
+				<h3 th:text="${totalNum} + '!!!'"></h3>
+				<a href="/nabeatu/" class="btn btn-primary">もう一度トライ</a>
+			</div>
+		</div>
+		<br>
+	</div>
+</body>
+</html>

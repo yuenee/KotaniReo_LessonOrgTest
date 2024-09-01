@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/q09_compoundinterest/css/result.css}" />
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>複利計算</title>
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h1 class="title display-4 text-center  mb-4">計算結果</h1>
+		<div class="result card text-center p-4">
+			<h1 class="result-msg" th:text="${result}+万円ッッッ！！！"></h1>
+			<h3 class="font-italic">クックック ・ ・ ・とどのつまり ・ ・ ・</h3>
+			<h1 class="font-weight-bold">金 ッッ・ ・ ・ ！！</h1>
+			<br/>
+			<a href="/compoundInterest/" class="btn btn-danger btn-block">もう一勝負・・・！</a>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

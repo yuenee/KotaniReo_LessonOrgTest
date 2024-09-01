@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+body {
+	background-image: url(../images/background.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
+}
+
+.title {
+	text-align: center;
+	color: #ff0000;
+	margin-bottom: 50px;
+}
+
+.form-control {
+	margin: auto;
+	width: 300px;
+	text-align: center;
+}
+
+.btn {
+	margin: auto;
+	width: 70px;
+}
+
+.text-danger {
+	color: #FF0000;
+}
+
+.calc {
+	text-align: center;
+	border: solid;
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.text-danger {
+	color: #FF0000;
+}

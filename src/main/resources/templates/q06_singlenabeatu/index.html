@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/q06_singlenabeatu/css/nabeatu_number.css}" />
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>世○のさらあつ</title>
+</head>
+
+<body>
+	<div id="containter" class="background">
+		<h3>入力した数字がなべあつ</h3>
+		<h1 class="sub-title">Let's input your number!!</h1>
+		<form th:action="@{/single_nabeatu/result}" th:object="${nabeatuForm}" method="post">
+			<input class="form-control number" th:field="*{number}" type="text" name="q" autocomplete="off"
+				maxlength="60"><br />
+			<span th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="text-danger">error!</span>
+			<p>
+				<button type="submit" class="btn btn-primary">
+					Push here!
+				</button>
+			</p>
+		</form>
+		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+	</div>
+</body>
+
+</html>

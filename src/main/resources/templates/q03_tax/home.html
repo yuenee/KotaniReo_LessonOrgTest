@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf">
+
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	</meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="/q03_tax/css/home.css">
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>税込計算</title>
+</head>
+
+<body>
+
+	<h1 class="page-title">税込計算</h1>
+	<div class="form border border-info rounded">
+		<form method="post" action="/tax/result" th:object="${taxFormModel}">
+			<label for="priceWithoutTax">税抜き金額を入力してください</label>
+			<input type="text" class="form-control" id="priceWithoutTax" placeholder="数値で入力してください"
+				th:field="*{priceWithoutTax}">
+			<div th:if="${#fields.hasErrors('priceWithoutTax')}" th:errors="*{priceWithoutTax}" class="text-danger">
+				error!</div>
+			<br />
+			<button class="btn btn-info" type="submit">計算</button>
+
+		</form>
+		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+	</div>
+
+</body>
+
+</html>

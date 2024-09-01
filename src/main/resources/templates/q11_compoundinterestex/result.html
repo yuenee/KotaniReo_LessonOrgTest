@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/q11_compoundinterestex/css/result.css}" />
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>Calc CompoundInterest Ex Result</title>
+</head>
+
+<body>
+	<div class="container border rounded">
+		<div class="content-header">
+			<h1>複利計算EX_結果画面</h1>
+		</div>
+		<div class="content-main">
+			<div class="result">
+				<h2 th:text="${overedYearsMsg}"></h2>
+			</div>
+			<table class="table table-striped table-hover table-bordered border-primary align-middle">
+				<thead class="table-dark ">
+					<tr>
+						<th>years</th>
+						<th>price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="price, state:${resultPriceList}">
+						<td th:text="${state.count} + '年目'">years</td>
+						<td th:text="${#numbers.formatDecimal(price,1,2,'POINT')} + '万円'">price</td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{'/compoundInterestEx/'}" class="btn btn-info">Goto Home</a>
+		</div>
+	</div>
+</body>
+
+</html>

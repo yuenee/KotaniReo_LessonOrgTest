@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="/q03_tax/css/result.css">
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>税込計算結果</title>
+</head>
+
+<body>
+	<h1 class="page-title">税込計算結果</h1>
+
+        <div class="result border border-info rounded">
+            <h2>税抜金額</h2>
+            <p class="result-value" th:text="${priceWithoutTax}+円"></p>
+            <h2>税率</h2>
+            <p class="result-value" th:text="${taxRate * 100}+％"/></p>
+            <h2>税込金額</h2>
+            <p class="tax-result" th:text="${#numbers.formatDecimal(taxResult, 0, 0)}+円" id="bmi"></p>
+            <a href="/tax/" class="btn btn-info btn-lg">戻る</a>
+        </div>
+    </div>
+</body>
+
+</html>

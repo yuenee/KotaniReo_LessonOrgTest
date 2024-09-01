@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/q02_bmi/css/result.css">
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/q02_bmi/js/result.js}" defer></script>
+    <title>BMI計算結果</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">BMI計算結果</h1>
+
+        <div class="result border border-info rounded">
+            <h2>身長</h2>
+            <p class="result-value" th:text="${height}+m"></p>
+            <h2>体重</h2>
+            <p class="result-value" th:text="${weight}+kg"/></p>
+            <h2>BMI</h2>
+            <p class="bmi-result" th:text="${#numbers.formatDecimal(bmiResult, 0, 2)}" id="bmi"></p>
+            <h2>肥満度</h2>
+            <p class="obesity-result" th:text="${obesityResult}" id="obesity"></p>
+            <a href="/bmi/" class="btn btn-info btn-lg">戻る</a>
+        </div>
+    </div>
+</body>
+</html>

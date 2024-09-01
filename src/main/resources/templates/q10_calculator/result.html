@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="/q10_calculator/css/result.css">
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>計算結果</title>
+</head>
+
+<body>
+	<h1 class="page-title">計算結果</h1>
+	<div class="result card">
+		<h2>一つ目の数</h2>
+		<span th:text="${firstNum}" class="num-result" /></span><br />
+		<h2>二つ目の数</h2>
+		<span th:text="${secondNum}" class="num-result" /></span><br />
+		<h2>計算方法</h2>
+		<span th:text="${physicalCalcType}" class="num-result" /></span><br />
+		<h2>計算結果</h2>
+		<p th:text="${#numbers.formatDecimal(result, 1, 2)}" id="calcResult" />
+		<a href="/calculator/" class="btn btn-info">戻る</a>
+		<br/>
+	</div>
+</body>
+
+</html>

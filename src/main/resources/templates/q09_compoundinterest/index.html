@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/q09_compoundinterest/css/index.css}" />
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>複利計算</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+		<h1 class="title text-center display-4">複利計算ツール</h1>
+        <div class="calc card p-4 mt-4 shadow-sm">
+            <form method="post" action="/compoundInterest/result" th:object="${calcForm}">
+                <div class="form-group">
+                    <label>元金 ( 例.最初に持っているお金:300万円 )</label>
+                    <input type="text" class="form-control" placeholder="数値で入力してください" th:field="*{principal}" />
+                    <div th:if="${#fields.hasErrors('principal')}" th:errors="*{principal}" class="text-danger">error!</div>
+                </div>
+                <div class="form-group">
+                    <label>金利 ( 例.1年あたりの利率:1.5% )</label>
+                    <input type="text" class="form-control" placeholder="数値で入力してください" th:field="*{rate}" />
+                    <div th:if="${#fields.hasErrors('rate')}" th:errors="*{rate}" class="text-danger">error!</div>
+                </div>
+                <div class="form-group">
+                    <label>経過年数 ( 例.金利を計算する年数:10年 )</label>
+                    <input type="text" class="form-control" placeholder="数値で入力してください" th:field="*{years}" />
+                    <div th:if="${#fields.hasErrors('years')}" th:errors="*{years}" class="text-danger">error!</div>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">計算</button>
+            </form>
+            <div th:if="${validationError}" class="alert alert-danger mt-3" th:text="${validationError}">validation error</div>
+        </div>
+    </div>
+	
+</body>
+</html>

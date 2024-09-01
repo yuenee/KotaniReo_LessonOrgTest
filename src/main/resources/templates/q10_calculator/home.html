@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="/q10_calculator/css/home.css">
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>電卓</title>
+</head>
+
+<body>
+	<h1 class="page-title">電卓</h1>
+	<div class="overview card ">
+		<p>このアプリケーションでは以下の計算が可能です</p>
+		<div th:each="calcTypeName : ${calcTypeNameArray}">
+			<span th:text=" ${calcTypeName} "></span>
+		</div>
+		<br />
+	</div>
+	<div class="form card ">
+		<form method="post" th:action="@{/calculator/result}" th:object="${calculatorForm}">
+			<label>一つ目の値</label><br />
+			<input class="form-control" type="text" placeholder="数値で入力してください" th:field="*{firstNum}" /><br />
+			<span th:if="${#fields.hasErrors('firstNum')}" th:errors="*{firstNum}" class="text-danger">error!</span>
+			<br />
+			<label>二つ目の値</label><br />
+			<input class="form-control" type="text" placeholder="数値で入力してください" th:field="*{secondNum}" /><br />
+			<span th:if="${#fields.hasErrors('secondNum')}" th:errors="*{secondNum}" class="text-danger">error!</span>
+			<br />
+
+			<span>計算方法を下記より選択してください</span>
+			<div th:each="calcType : ${calcTypes}">
+				<input class="form-check-input" type="radio" th:value="${calcType.key}" th:text="${calcType.value}" th:field="*{calcType}">
+			</div>
+			<span th:if="${#fields.hasErrors('calcType')}" th:errors="*{calcType}" class="text-danger">error!</span>
+			<br />
+			<input type="submit" value="計算" id="submit" class="btn btn-info"><br />
+			<br />
+		</form>
+		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+	</div>
+</body>
+
+</html>

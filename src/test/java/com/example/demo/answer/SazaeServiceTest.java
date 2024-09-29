@@ -7,24 +7,61 @@ import org.junit.jupiter.api.Test;
 import com.example.demo.mentee.q04_sazae.SazaeService;
 
 class SazaeServiceTest {
+	private SazaeService sazaeService = new SazaeService();
+
+	/* 共通データの準備 */
+	private String rock = "goo";
+	private String scissors = "choki";
+	private String paper = "per";
 
 	@Test
-	void じゃんけんの勝敗を決める() {
-		SazaeService sazaeService = new SazaeService();
+	void じゃんけん勝ち() {
+		/* データの準備 */
+		String actual = null;
+		String expected = "win";
 
-		// 勝ち
-		assertEquals("win", sazaeService.janken("goo", "choki"));
-		assertEquals("win", sazaeService.janken("choki", "per"));
-		assertEquals("win", sazaeService.janken("per", "goo"));
+		/* 検証 */
+		actual = sazaeService.janken(rock, scissors);
+		assertEquals(expected, actual);
 
-		// あいこ
-		assertEquals("draw", sazaeService.janken("goo", "goo"));
-		assertEquals("draw", sazaeService.janken("choki", "choki"));
-		assertEquals("draw", sazaeService.janken("per", "per"));
+		actual = sazaeService.janken(scissors, paper);
+		assertEquals(expected, actual);
 
-		// 負け
-		assertEquals("lose", sazaeService.janken("goo", "per"));
-		assertEquals("lose", sazaeService.janken("choki", "goo"));
-		assertEquals("lose", sazaeService.janken("per", "choki"));
+		actual = sazaeService.janken(paper, rock);
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void じゃんけんあいこ() {
+		/* データの準備 */
+		String actual = null;
+		String expected = "draw";
+
+		/* 検証 */
+		actual = sazaeService.janken(rock, rock);
+		assertEquals(expected, actual);
+
+		actual = sazaeService.janken(scissors, scissors);
+		assertEquals(expected, actual);
+
+		actual = sazaeService.janken(paper, paper);
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void じゃんけん負け() {
+		/* データの準備 */
+		String actual = null;
+		String expected = "lose";
+
+		/* 検証 */
+		actual = sazaeService.janken(rock, paper);
+		assertEquals(expected, actual);
+
+		actual = sazaeService.janken(scissors, rock);
+		assertEquals(expected, actual);
+
+		actual = sazaeService.janken(paper, scissors);
+		assertEquals(expected, actual);
 	}
 }

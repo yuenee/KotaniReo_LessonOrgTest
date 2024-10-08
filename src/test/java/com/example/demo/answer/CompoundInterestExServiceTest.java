@@ -27,6 +27,7 @@ class CompoundInterestExServiceTest {
 		int principal = 100000;
 		double rate = 0.1;
 		int year = 3;
+		double delta = 0.5;
 
 		List<Double> expectedPriceList = new ArrayList<>();
 		expectedPriceList.add(100100.0);
@@ -38,7 +39,7 @@ class CompoundInterestExServiceTest {
 
 		/* 検証 */
 		for (int i = 0; i < year; i++) {
-			assertEquals(expectedPriceList.get(i), actualPriceList.get(i), 0.5);
+			assertEquals(expectedPriceList.get(i), actualPriceList.get(i), delta);
 		}
 	}
 

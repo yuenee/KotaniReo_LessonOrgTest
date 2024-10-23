@@ -197,7 +197,6 @@ class NumeronServiceTest {
 		/* データの準備 */
 		List<Integer> answerList = new ArrayList<>();
 		List<Integer> attackList = new ArrayList<>();
-		int listSize = 3;
 		int expectedBlowCount = 0;
 		int actualBlowCount = 0;
 		answerList.add(0); answerList.add(1); answerList.add(2);
@@ -210,29 +209,52 @@ class NumeronServiceTest {
 
 		/* 並び「012」のうち、数字が1個ある(3 x 2パターン) */
 		expectedBlowCount = 1;
-		System.out.println("*** [0, 1, 2] のうち、異なるindexに数字が1個ある(3 x 2パターン) ***");
-		for (int num = 0; num < listSize; num++) {
-			for (int i = 1; i <= 2; i++) {
-				attackList.add(9); attackList.add(9); attackList.add(9);
-				attackList.set((num + i) % listSize, num);
-				actualBlowCount = numeronService.getBlowCount(answerList, attackList);
-				assertEquals(expectedBlowCount, actualBlowCount);
-				System.out.println(attackList); // 確認用出力
-				attackList.clear();
-			}
-		}
+		attackList.add(9); attackList.add(0); attackList.add(9);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(9); attackList.add(9); attackList.add(0);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(1); attackList.add(9); attackList.add(9);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(9); attackList.add(9); attackList.add(1);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(2); attackList.add(9); attackList.add(9);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(9); attackList.add(2); attackList.add(9);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
 
 		/* 並び「012」のうち、1つの数字が2個ある(3パターン) */
 		expectedBlowCount = 2;
-		System.out.println("*** [0, 1, 2] のうち、異なるindexに数字が2個ある(3パターン) ***");
-		for (int num = 0; num < listSize; num++) {
-			attackList.add(9); attackList.add(9); attackList.add(9);
-			attackList.set((num + 1) % listSize, num); attackList.set((num + 2) % listSize, num);
-			actualBlowCount = numeronService.getBlowCount(answerList, attackList);
-			assertEquals(expectedBlowCount, actualBlowCount);
-			System.out.println(attackList); // 確認用出力
-			attackList.clear();
-		}
+		attackList.add(9); attackList.add(0); attackList.add(0);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(1); attackList.add(9); attackList.add(1);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
+
+		attackList.add(2); attackList.add(2); attackList.add(9);
+		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
+		assertEquals(expectedBlowCount, actualBlowCount);
+		attackList.clear();
 
 		/* 並び「012」のうち、0と1がある(3パターン) */
 		attackList.add(1); attackList.add(0); attackList.add(9);

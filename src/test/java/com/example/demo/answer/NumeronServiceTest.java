@@ -50,9 +50,7 @@ class NumeronServiceTest {
 	void ランダム数値3桁の答えの数列が格納されているリストが取得できる() {
 		/* データの準備 */
 		List<Integer> expectedIntList = new ArrayList<>();
-		expectedIntList.add(0);
-		expectedIntList.add(1);
-		expectedIntList.add(2);
+		expectedIntList.add(0); expectedIntList.add(1); expectedIntList.add(2);
 
 		/* initメソッド内部で呼ばれているRandomクラスの振る舞い定義 */
 		try (MockedConstruction<Random> ignore = mockConstruction(
@@ -67,29 +65,74 @@ class NumeronServiceTest {
 
 	@Test
 	void 合致判定結果が格納されているのリストが取得できる() {
-		/* 固定データの準備 */
+		/* データの準備 */
+		List<Integer> expectedAttackResult = new ArrayList<>();
+		List<Integer> actualAttackResult = new ArrayList<>();
 		String attackNumber = "000";
-		int listSize = 3;
 
 		/* 全パターン検証 */
-		for (int hitIndex = 0; hitIndex < listSize; hitIndex++) {
-			for (int blowIndex = 0; blowIndex < listSize; blowIndex++) {
-				/* 内部で呼ばれているメソッドのモック化 */
-				doReturn(hitIndex).when(numeronService).getHitCount(anyList(), anyList());
-				doReturn(blowIndex).when(numeronService).getBlowCount(anyList(), anyList());
+		doReturn(0).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(0).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(0); expectedAttackResult.add(0);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
 
-				/* データ準備 */
-				List<Integer> expectedAttackResult = new ArrayList<>();
-				expectedAttackResult.add(hitIndex);
-				expectedAttackResult.add(blowIndex);
+		doReturn(0).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(1).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(0); expectedAttackResult.add(1);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
 
-				/* テスト対象メソッド実行 */
-				List<Integer> actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		doReturn(0).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(2).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(0); expectedAttackResult.add(2);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
 
-				/* 検証 */
-				assertEquals(expectedAttackResult, actualAttackResult);
-			}
-		}
+		doReturn(1).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(0).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(1); expectedAttackResult.add(0);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
+
+		doReturn(1).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(1).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(1); expectedAttackResult.add(1);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
+
+		doReturn(1).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(2).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(1); expectedAttackResult.add(2);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
+
+		doReturn(2).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(0).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(2); expectedAttackResult.add(0);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
+
+		doReturn(2).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(1).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(2); expectedAttackResult.add(1);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
+
+		doReturn(2).when(numeronService).getHitCount(anyList(), anyList());
+		doReturn(2).when(numeronService).getBlowCount(anyList(), anyList());
+		expectedAttackResult.add(2); expectedAttackResult.add(2);
+		actualAttackResult = numeronService.getAttackResult(new ArrayList<Integer>(), attackNumber);
+		assertEquals(expectedAttackResult, actualAttackResult);
+		expectedAttackResult.clear();
 	}
 
 	@Test

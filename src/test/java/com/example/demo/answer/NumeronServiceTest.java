@@ -153,22 +153,37 @@ class NumeronServiceTest {
 
 		/* 1箇所完全一致(3パターン) */
 		expectedHitCount = 1;
-		for (int num = 0; num < listSize; num++) {
-			attackList.add(num); attackList.add(num); attackList.add(num);
-			actualHitCount = numeronService.getHitCount(answerList, attackList);
-			assertEquals(expectedHitCount, actualHitCount);
-			attackList.clear();
-		}
+		attackList.add(0); attackList.add(0); attackList.add(0);
+		actualHitCount = numeronService.getHitCount(answerList, attackList);
+		assertEquals(expectedHitCount, actualHitCount);
+		attackList.clear();
+
+		attackList.add(1); attackList.add(1); attackList.add(1);
+		actualHitCount = numeronService.getHitCount(answerList, attackList);
+		assertEquals(expectedHitCount, actualHitCount);
+		attackList.clear();
+
+		attackList.add(2); attackList.add(2); attackList.add(2);
+		actualHitCount = numeronService.getHitCount(answerList, attackList);
+		assertEquals(expectedHitCount, actualHitCount);
+		attackList.clear();
 
 		/* 2箇所完全一致(3パターン) */
 		expectedHitCount = 2;
-		for (int num = 0; num < listSize; num++) {
-			attackList.add(0); attackList.add(1); attackList.add(2);
-			attackList.set(num, 9);
-			actualHitCount = numeronService.getHitCount(answerList, attackList);
-			assertEquals(expectedHitCount, actualHitCount);
-			attackList.clear();
-		}
+		attackList.add(9); attackList.add(1); attackList.add(2);
+		actualHitCount = numeronService.getHitCount(answerList, attackList);
+		assertEquals(expectedHitCount, actualHitCount);
+		attackList.clear();
+
+		attackList.add(0); attackList.add(9); attackList.add(2);
+		actualHitCount = numeronService.getHitCount(answerList, attackList);
+		assertEquals(expectedHitCount, actualHitCount);
+		attackList.clear();
+
+		attackList.add(0); attackList.add(1); attackList.add(9);
+		actualHitCount = numeronService.getHitCount(answerList, attackList);
+		assertEquals(expectedHitCount, actualHitCount);
+		attackList.clear();
 
 		/* 3箇所完全一致(1パターン) */
 		expectedHitCount = 3;

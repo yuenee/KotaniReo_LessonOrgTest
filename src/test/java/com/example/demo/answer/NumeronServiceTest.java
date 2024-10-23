@@ -140,7 +140,6 @@ class NumeronServiceTest {
 		/* データの準備 */
 		List<Integer> answerList = new ArrayList<>();
 		List<Integer> attackList = new ArrayList<>();
-		int listSize = 3;
 		int expectedHitCount = 0;
 		int actualHitCount = 0;
 		answerList.add(0); answerList.add(1); answerList.add(2);

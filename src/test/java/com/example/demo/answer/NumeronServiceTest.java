@@ -231,7 +231,7 @@ class NumeronServiceTest {
 		assertEquals(expectedBlowCount, actualBlowCount);
 		attackList.clear();
 
-		/* 並び「012」のうち、0と1がある(3パターン) */
+		/* 並び「012」のうち、左2つがある(3パターン) */
 		attackList.add(1); attackList.add(0); attackList.add(9);
 		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
 		assertEquals(expectedBlowCount, actualBlowCount);
@@ -247,7 +247,7 @@ class NumeronServiceTest {
 		assertEquals(expectedBlowCount, actualBlowCount);
 		attackList.clear();
 
-		/* 並び「012」のうち、1と2がある(3パターン) */
+		/* 並び「012」のうち、右2つがある(3パターン) */
 		attackList.add(2); attackList.add(9); attackList.add(1);
 		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
 		assertEquals(expectedBlowCount, actualBlowCount);
@@ -263,7 +263,7 @@ class NumeronServiceTest {
 		assertEquals(expectedBlowCount, actualBlowCount);
 		attackList.clear();
 
-		/* 並び「012」のうち、2と0がある(3パターン) */
+		/* 並び「012」のうち、端2つがある(3パターン) */
 		attackList.add(2); attackList.add(0); attackList.add(9);
 		actualBlowCount = numeronService.getBlowCount(answerList, attackList);
 		assertEquals(expectedBlowCount, actualBlowCount);
@@ -279,7 +279,7 @@ class NumeronServiceTest {
 		assertEquals(expectedBlowCount, actualBlowCount);
 		attackList.clear();
 
-		/* 並び「012」のうち、数字が3個ある(2パターン) */
+		/* 並び「012」のうち、全ての数字がある(2パターン) */
 		expectedBlowCount = 3;
 		attackList.add(1); attackList.add(2); attackList.add(0);
 		actualBlowCount = numeronService.getBlowCount(answerList, attackList);

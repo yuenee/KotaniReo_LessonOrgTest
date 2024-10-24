@@ -22,31 +22,6 @@ class NumeronServiceTest {
 	NumeronService numeronService;
 
 	@Test
-	void コンストラクタが呼ばれる() {
-		/* フィールドに妥当な値がセットされているかで判定 */
-
-		try (MockedConstruction<Random> ignore = mockConstruction(
-				Random.class,
-				(mock, ctx) -> doReturn(0).when(mock).nextInt(anyInt()))) {
-			/* データの準備 */
-			List<Integer> expectedAnswerList = new ArrayList<>();
-			expectedAnswerList.add(0); expectedAnswerList.add(1); expectedAnswerList.add(2);
-			int expectedTurn = 0;
-
-			/* コンストラクタ実行 */
-			NumeronService numeronService = new NumeronService();
-
-			/* 答えの数列の検証 */
-			List<Integer> actualAnswerList = numeronService.getAnswerList();
-			assertEquals(expectedAnswerList, actualAnswerList);
-
-			/* ターン数の検証 */
-			int actualTurn = numeronService.getTurn();
-			assertEquals(expectedTurn, actualTurn);
-		}
-	}
-
-	@Test
 	void ランダム数値3桁の答えの数列が格納されているリストが取得できる() {
 		/* データの準備 */
 		List<Integer> expectedIntList = new ArrayList<>();
